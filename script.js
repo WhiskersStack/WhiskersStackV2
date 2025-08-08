@@ -1,3 +1,27 @@
+// Dark Mode Toggle
+const darkModeToggle = document.getElementById('darkModeToggle');
+const body = document.body;
+
+// Check for saved dark mode preference
+const darkMode = localStorage.getItem('darkMode');
+if (darkMode === 'enabled') {
+    body.setAttribute('data-theme', 'dark');
+    darkModeToggle.classList.add('dark');
+}
+
+// Dark mode toggle functionality
+darkModeToggle.addEventListener('click', () => {
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+        darkModeToggle.classList.remove('dark');
+        localStorage.setItem('darkMode', 'disabled');
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        darkModeToggle.classList.add('dark');
+        localStorage.setItem('darkMode', 'enabled');
+    }
+});
+
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -32,11 +56,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Navbar background change on scroll
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
+    
     if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        navbar.style.background = 'rgba(10, 10, 15, 0.98)';
+        navbar.style.boxShadow = '0 2px 20px var(--shadow-color), 0 0 20px rgba(99, 102, 241, 0.1)';
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.background = 'rgba(10, 10, 15, 0.95)';
         navbar.style.boxShadow = 'none';
     }
 });
