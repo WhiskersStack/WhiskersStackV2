@@ -1,26 +1,6 @@
-// Dark Mode Toggle
-const darkModeToggle = document.getElementById('darkModeToggle');
+// Space theme is always active
 const body = document.body;
-
-// Check for saved dark mode preference
-const darkMode = localStorage.getItem('darkMode');
-if (darkMode === 'enabled') {
-    body.setAttribute('data-theme', 'dark');
-    darkModeToggle.classList.add('dark');
-}
-
-// Dark mode toggle functionality
-darkModeToggle.addEventListener('click', () => {
-    if (body.getAttribute('data-theme') === 'dark') {
-        body.removeAttribute('data-theme');
-        darkModeToggle.classList.remove('dark');
-        localStorage.setItem('darkMode', 'disabled');
-    } else {
-        body.setAttribute('data-theme', 'dark');
-        darkModeToggle.classList.add('dark');
-        localStorage.setItem('darkMode', 'enabled');
-    }
-});
+body.setAttribute('data-theme', 'dark');
 
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
